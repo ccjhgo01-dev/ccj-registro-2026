@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+/* ===========================
+   Paleta CCJ Hidalgo 2026
+   Extraída del material gráfico oficial
+   =========================== */
+:root {
+  --verde-olivo: #6B7C3A;
+  --verde-oscuro: #4A5828;
+  --dorado: #C8952A;
+  --dorado-claro: #E8B84B;
+  --tierra: #7D4E2A;
+  --tierra-oscuro: #3D2410;
+  --crema: #F5F0E8;
+  --beige: #EDE5D0;
+  --cielo: #87B8D4;
+  --cielo-claro: #C2DDE8;
+  --blanco: #FFFFFF;
+
+  --font-display: var(--font-fredoka);
+  --font-body: var(--font-nunito);
+}
+
+@theme inline {
+  --color-verde-olivo: var(--verde-olivo);
+  --color-verde-oscuro: var(--verde-oscuro);
+  --color-dorado: var(--dorado);
+  --color-dorado-claro: var(--dorado-claro);
+  --color-tierra: var(--tierra);
+  --color-tierra-oscuro: var(--tierra-oscuro);
+  --color-crema: var(--crema);
+  --color-beige: var(--beige);
+  --color-cielo: var(--cielo);
+  --color-cielo-claro: var(--cielo-claro);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+/* Tipografía base */
+body {
+  font-family: var(--font-body), sans-serif;
+  color: var(--tierra-oscuro);
+  background-color: var(--crema);
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display), sans-serif;
+}
+
+/* Elementos de form */
+input, select, textarea {
+  font-family: var(--font-body), sans-serif;
+}
+
+/* Checkbox personalizados */
+input[type="checkbox"] {
+  accent-color: var(--verde-olivo);
+  width: 1.1rem;
+  height: 1.1rem;
+  cursor: pointer;
+}
+
+/* Focus accesible */
+:focus-visible {
+  outline: 2px solid var(--dorado);
+  outline-offset: 2px;
+}
+
+/* Animación suave para el mascot */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.mascot-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Textura de papel en elementos clave */
+.paper-texture {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
