@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import ModalPatrocinador from '@/components/ModalPatrocinador'
 import { ACTIVIDADES } from '@/types/registro'
 
 const CONTAINER = 'max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8'
@@ -268,12 +269,7 @@ export default function Home() {
               Tu marca u organización puede sumarse como patrocinador y ser parte del cambio climático
               juvenil en Hidalgo.
             </p>
-            <a
-              href="mailto:ccjhgo01@gmail.com"
-              className="inline-block bg-dorado hover:bg-dorado-claro text-tierra-oscuro font-display font-semibold text-lg px-8 py-3.5 rounded-2xl transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-            >
-              Ser patrocinador
-            </a>
+            <ModalPatrocinador />
           </div>
 
           {/* Carrusel — imágenes oficiales del material CCJ, scroll-snap nativo */}
