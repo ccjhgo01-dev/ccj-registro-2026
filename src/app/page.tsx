@@ -7,6 +7,25 @@ const CONTAINER = 'max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8'
 const ACTIVIDADES_IZQ = ACTIVIDADES.filter((a) => a.dia <= 3)
 const ACTIVIDADES_DER = ACTIVIDADES.filter((a) => a.dia > 3)
 
+const PATROCINIO_SLIDES = [
+  {
+    src: '/images/carrusel-convocatoria.jpeg',
+    alt: 'Convocatoria para delegadxs — mascota CCJ Hidalgo tocando tambor',
+  },
+  {
+    src: '/images/carrusel-requisitos.jpeg',
+    alt: 'Requisitos para participar en la CCJ Hidalgo 2026',
+  },
+  {
+    src: '/images/carrusel-patrocinador.jpeg',
+    alt: '¿Quieres ser patrocinador de la CCJ Hidalgo 2026?',
+  },
+  {
+    src: '/images/carrusel-ayuda.jpeg',
+    alt: 'Toda ayuda cuenta — patrocinios en efectivo o en especie',
+  },
+]
+
 const REQUISITOS = [
   {
     numero: '01',
@@ -257,15 +276,36 @@ export default function Home() {
             </a>
           </div>
 
-          {/* Carrusel de logos — placeholders, scroll-snap nativo */}
-          <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:justify-center scrollbar-hide">
-            {[1, 2, 3].map((n) => (
+          {/* Carrusel — imágenes oficiales del material CCJ, scroll-snap nativo */}
+          <div className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
+            {PATROCINIO_SLIDES.map((slide, i) => (
               <div
-                key={n}
-                className="shrink-0 snap-center w-56 h-32 sm:w-64 sm:h-36 bg-crema/10 border-2 border-dashed border-dorado/40 rounded-2xl flex items-center justify-center"
+                key={slide.src}
+                id={`patrocinio-slide-${i}`}
+                className="shrink-0 snap-center scroll-ml-4 w-[85%] sm:w-[calc(50%-10px)]"
               >
-                <span className="text-crema/50 font-semibold text-sm tracking-wide">Patrocinador</span>
+                <div className="relative h-[340px] bg-tierra-oscuro rounded-2xl overflow-hidden">
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    sizes="(min-width: 640px) 50vw, 85vw"
+                    className="object-contain"
+                  />
+                </div>
               </div>
+            ))}
+          </div>
+
+          {/* Indicadores de posición — anclas CSS puro, sin JS */}
+          <div className="flex justify-center gap-2 mt-5">
+            {PATROCINIO_SLIDES.map((slide, i) => (
+              <a
+                key={slide.src}
+                href={`#patrocinio-slide-${i}`}
+                aria-label={`Ir a imagen ${i + 1} de ${PATROCINIO_SLIDES.length}`}
+                className="w-2.5 h-2.5 rounded-full bg-crema/30 hover:bg-dorado transition-colors"
+              />
             ))}
           </div>
         </div>
