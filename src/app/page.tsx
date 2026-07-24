@@ -2,12 +2,67 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ACTIVIDADES } from '@/types/registro'
 
+const CONTAINER = 'max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8'
+
+const ACTIVIDADES_IZQ = ACTIVIDADES.filter((a) => a.dia <= 3)
+const ACTIVIDADES_DER = ACTIVIDADES.filter((a) => a.dia > 3)
+
+const REQUISITOS = [
+  {
+    numero: '01',
+    titulo: '18 a 29 años',
+    desc: 'El espacio está diseñado para juventudes en ese rango de edad.',
+  },
+  {
+    numero: '02',
+    titulo: 'Hidalguense o residente',
+    desc: 'Ser del estado o haber vivido en Hidalgo al menos el último año.',
+  },
+  {
+    numero: '03',
+    titulo: 'Ganas de cambiar',
+    desc: 'Querer ser un factor de cambio ambiental en tu comunidad.',
+  },
+]
+
+function ActividadCard({ act }: { act: (typeof ACTIVIDADES)[number] }) {
+  return (
+    <div className="bg-crema rounded-2xl p-5 border border-dorado/20 flex gap-4 items-start">
+      <div className="shrink-0 w-14 h-14 rounded-xl bg-verde-olivo flex flex-col items-center justify-center text-blanco">
+        <span className="text-xs opacity-70">Día</span>
+        <span className="font-display font-bold text-xl leading-none">{act.dia}</span>
+      </div>
+
+      <div className="flex-1 min-w-0">
+        <div className="flex flex-wrap items-center gap-2 mb-1">
+          <span className="text-dorado font-semibold text-sm">{act.fecha}</span>
+          {act.hora && (
+            <span className="bg-dorado/15 text-dorado text-xs px-2 py-0.5 rounded-full">
+              {act.hora}
+            </span>
+          )}
+          {!act.confirmada && (
+            <span className="bg-tierra/10 text-tierra text-xs px-2 py-0.5 rounded-full">
+              Por confirmar
+            </span>
+          )}
+        </div>
+        <h3 className="font-display text-verde-oscuro font-semibold text-lg leading-snug">
+          {act.titulo}
+        </h3>
+        {act.subtitulo && <p className="text-tierra text-sm mt-0.5">{act.subtitulo}</p>}
+        {act.ponente && <p className="text-tierra/70 text-sm mt-1 italic">{act.ponente}</p>}
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <main className="min-h-screen">
       {/* ───────── NAVBAR ───────── */}
       <nav className="sticky top-0 z-50 bg-verde-oscuro/95 backdrop-blur-sm shadow-md">
-        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div className={`${CONTAINER} py-3 flex items-center justify-between`}>
           <div className="flex items-center gap-3">
             <div className="bg-crema rounded-lg px-2.5 py-1.5 shadow-sm">
               <Image
@@ -31,26 +86,32 @@ export default function Home() {
 
       {/* ───────── HERO ───────── */}
       <section className="relative bg-verde-oscuro overflow-hidden paper-texture">
-        {/* Fondo decorativo con formas orgánicas */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-dorado blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-cielo blur-3xl" />
+        {/* Elemento geométrico diagonal — rompe el fondo liso */}
+        <div aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div
+            className="absolute top-0 right-0 h-full w-2/3 bg-verde-olivo/20"
+            style={{ clipPath: 'polygon(35% 0, 100% 0, 100% 100%, 8% 100%)' }}
+          />
+          <div
+            className="absolute top-0 right-0 h-full w-2/3 bg-dorado-claro/70"
+            style={{ clipPath: 'polygon(37.5% 0, 39% 0, 12% 100%, 10.5% 100%)' }}
+          />
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-4 py-16 md:py-24">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div>
-              {/* Badge */}
+        <div className={`relative ${CONTAINER} py-12 sm:py-16 lg:py-24`}>
+          <div className="flex flex-col lg:grid lg:grid-cols-[55%_45%] lg:items-center gap-10 lg:gap-14">
+            {/* Texto */}
+            <div className="order-2 lg:order-1">
               <div className="inline-flex items-center gap-2 bg-dorado/20 border border-dorado/40 rounded-full px-4 py-1.5 mb-6">
                 <span className="w-2 h-2 rounded-full bg-dorado-claro animate-pulse" />
                 <span className="text-dorado-claro text-sm font-semibold">Registro Oficial 2026</span>
               </div>
 
-              <h1 className="font-display text-5xl md:text-6xl text-blanco leading-tight mb-4">
-                ¡La espera <span className="text-dorado-claro">terminó!</span>
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl text-blanco leading-[1.05] mb-5">
+                Tu voz es <span className="text-dorado-claro">acción climática</span>
               </h1>
 
-              <p className="text-crema/80 text-lg leading-relaxed mb-8">
+              <p className="text-crema/80 text-lg leading-relaxed mb-8 max-w-xl">
                 La <strong className="text-crema">Cumbre Climática Juvenil Hidalgo 2026</strong> ya tiene fechas,
                 actividades y un espacio para tu voz.
                 Regístrate para asistir a los eventos pre-cumbre y la cumbre oficial de delegadxs.
@@ -61,7 +122,7 @@ export default function Home() {
                   href="/registro"
                   className="inline-block bg-dorado hover:bg-dorado-claro text-tierra-oscuro font-display font-semibold text-lg px-8 py-3.5 rounded-2xl transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                 >
-                  ¡Regístrate ahora!
+                  Regístrate ahora
                 </Link>
                 <a
                   href="#actividades"
@@ -86,14 +147,14 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Mascota oficial CCJ — foto real del material de campaña */}
-            <div className="flex justify-center items-end">
-              <div className="mascot-float relative w-72 h-80 md:w-80 md:h-96 rounded-[2rem] overflow-hidden border-4 border-dorado/60 shadow-2xl rotate-2">
+            {/* Mascota oficial CCJ — foto real, sin tarjeta, que respire */}
+            <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+              <div className="mascot-float relative w-64 sm:w-80 lg:w-full lg:max-w-[440px] aspect-[4/5] rounded-3xl overflow-hidden">
                 <Image
                   src="/images/mascota-hero.jpeg"
                   alt="Mascota oficial CCJ Hidalgo 2026, la salamandra, registrando su ingreso a la cumbre"
                   fill
-                  sizes="(min-width: 768px) 320px, 288px"
+                  sizes="(min-width: 1024px) 440px, (min-width: 640px) 320px, 256px"
                   className="object-cover"
                   style={{ objectPosition: '50% 68%' }}
                   priority
@@ -106,40 +167,23 @@ export default function Home() {
         {/* Borde inferior ondulado */}
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-            <path d="M0,30 Q360,0 720,30 Q1080,60 1440,30 L1440,60 L0,60 Z" fill="#F5F0E8"/>
+            <path d="M0,30 Q360,0 720,30 Q1080,60 1440,30 L1440,60 L0,60 Z" fill="#F5F0E8" />
           </svg>
         </div>
       </section>
 
       {/* ───────── REQUISITOS ───────── */}
-      <section className="py-14 bg-crema">
-        <div className="max-w-5xl mx-auto px-4">
+      <section className="py-14 lg:py-20 bg-crema">
+        <div className={CONTAINER}>
           <h2 className="font-display text-3xl text-verde-oscuro text-center mb-10">
             ¿Quién puede participar?
           </h2>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {[
-              {
-                icon: '🎂',
-                titulo: '18 a 29 años',
-                desc: 'El espacio está diseñado para juventudes en ese rango de edad.',
-              },
-              {
-                icon: '📍',
-                titulo: 'Hidalguense o residente',
-                desc: 'Ser del estado o haber vivido en Hidalgo al menos el último año.',
-              },
-              {
-                icon: '🌱',
-                titulo: 'Ganas de cambiar',
-                desc: 'Querer ser un factor de cambio ambiental en tu comunidad.',
-              },
-            ].map((req) => (
-              <div
-                key={req.titulo}
-                className="bg-beige rounded-2xl p-6 border border-dorado/20 text-center"
-              >
-                <div className="text-4xl mb-3">{req.icon}</div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-0 lg:divide-x lg:divide-dorado/25">
+            {REQUISITOS.map((req) => (
+              <div key={req.numero} className="bg-beige lg:bg-transparent rounded-2xl lg:rounded-none border border-dorado/20 lg:border-none p-6 lg:px-8 lg:py-2 text-center lg:text-left">
+                <p className="font-display font-bold text-6xl text-verde-olivo/25 leading-none mb-3">
+                  {req.numero}
+                </p>
                 <h3 className="font-display text-verde-oscuro font-semibold text-lg mb-2">
                   {req.titulo}
                 </h3>
@@ -151,68 +195,78 @@ export default function Home() {
       </section>
 
       {/* ───────── PROGRAMA / ACTIVIDADES ───────── */}
-      <section id="actividades" className="py-14 bg-beige paper-texture">
-        <div className="max-w-5xl mx-auto px-4">
+      <section id="actividades" className="py-14 lg:py-20 bg-beige paper-texture">
+        <div className={CONTAINER}>
           <div className="text-center mb-10">
             <p className="text-dorado font-semibold text-sm uppercase tracking-widest mb-2">Programa</p>
             <h2 className="font-display text-3xl text-verde-oscuro">Actividades pre-cumbre</h2>
             <p className="text-tierra mt-2">Cada sesión dura 40 min + 5 min tolerancia + 5 min extras</p>
           </div>
 
-          <div className="space-y-4">
-            {ACTIVIDADES.map((act) => (
-              <div
-                key={act.id}
-                className="bg-crema rounded-2xl p-5 border border-dorado/20 flex gap-4 items-start"
-              >
-                {/* Día badge */}
-                <div className="shrink-0 w-14 h-14 rounded-xl bg-verde-olivo flex flex-col items-center justify-center text-blanco">
-                  <span className="text-xs opacity-70">Día</span>
-                  <span className="font-display font-bold text-xl leading-none">{act.dia}</span>
-                </div>
+          <div className="lg:grid lg:grid-cols-2 lg:gap-8">
+            {/* Columna izquierda — días 1 a 3 */}
+            <div className="space-y-4">
+              {ACTIVIDADES_IZQ.map((act) => (
+                <ActividadCard key={act.id} act={act} />
+              ))}
+            </div>
 
-                <div className="flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center gap-2 mb-1">
-                    <span className="text-dorado font-semibold text-sm">{act.fecha}</span>
-                    {act.hora && (
-                      <span className="bg-dorado/15 text-dorado text-xs px-2 py-0.5 rounded-full">
-                        {act.hora}
-                      </span>
-                    )}
-                    {!act.confirmada && (
-                      <span className="bg-tierra/10 text-tierra text-xs px-2 py-0.5 rounded-full">
-                        Por confirmar
-                      </span>
-                    )}
+            {/* Columna derecha — días 4, 5 + cumbre */}
+            <div className="space-y-4 mt-4 lg:mt-0">
+              {ACTIVIDADES_DER.map((act) => (
+                <ActividadCard key={act.id} act={act} />
+              ))}
+
+              {/* Cumbre principal */}
+              <div className="bg-verde-oscuro text-crema rounded-2xl p-6">
+                <div className="flex gap-4 items-center">
+                  <div className="shrink-0 w-10 h-10 bg-dorado-claro rotate-45 rounded-md" aria-hidden />
+                  <div>
+                    <p className="text-dorado-claro font-display font-semibold text-xl">
+                      Cumbre Oficial para Delegadxs
+                    </p>
+                    <p className="text-crema/80 text-sm mt-1">
+                      31 de julio y 1° de agosto — El encuentro central donde se construyen propuestas
+                      de posicionamiento juvenil frente a la crisis climática de Hidalgo.
+                    </p>
                   </div>
-                  <h3 className="font-display text-verde-oscuro font-semibold text-lg leading-snug">
-                    {act.titulo}
-                  </h3>
-                  {act.subtitulo && (
-                    <p className="text-tierra text-sm mt-0.5">{act.subtitulo}</p>
-                  )}
-                  {act.ponente && (
-                    <p className="text-tierra/70 text-sm mt-1 italic">{act.ponente}</p>
-                  )}
                 </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Cumbre principal */}
-          <div className="mt-8 bg-verde-oscuro text-crema rounded-2xl p-6">
-            <div className="flex gap-4 items-center">
-              <div className="shrink-0 text-4xl">🏔️</div>
-              <div>
-                <p className="text-dorado-claro font-display font-semibold text-xl">
-                  Cumbre Oficial para Delegadxs
-                </p>
-                <p className="text-crema/80 text-sm mt-1">
-                  31 de julio y 1° de agosto — El encuentro central donde se construyen propuestas
-                  de posicionamiento juvenil frente a la crisis climática de Hidalgo.
-                </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── PATROCINADORES ───────── */}
+      <section className="py-14 lg:py-20 bg-verde-oscuro paper-texture">
+        <div className={CONTAINER}>
+          <div className="text-center mb-10">
+            <p className="text-dorado font-semibold text-sm uppercase tracking-widest mb-2">Alianzas</p>
+            <h2 className="font-display text-3xl lg:text-4xl text-crema mb-3">
+              ¿Quieres apoyar la CCJ Hidalgo?
+            </h2>
+            <p className="text-crema/70 max-w-xl mx-auto mb-6">
+              Tu marca u organización puede sumarse como patrocinador y ser parte del cambio climático
+              juvenil en Hidalgo.
+            </p>
+            <a
+              href="mailto:ccjhgo01@gmail.com"
+              className="inline-block bg-dorado hover:bg-dorado-claro text-tierra-oscuro font-display font-semibold text-lg px-8 py-3.5 rounded-2xl transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            >
+              Ser patrocinador
+            </a>
+          </div>
+
+          {/* Carrusel de logos — placeholders, scroll-snap nativo */}
+          <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:justify-center scrollbar-hide">
+            {[1, 2, 3].map((n) => (
+              <div
+                key={n}
+                className="shrink-0 snap-center w-56 h-32 sm:w-64 sm:h-36 bg-crema/10 border-2 border-dashed border-dorado/40 rounded-2xl flex items-center justify-center"
+              >
+                <span className="text-crema/50 font-semibold text-sm tracking-wide">Patrocinador</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -230,7 +284,7 @@ export default function Home() {
             href="/registro"
             className="inline-block bg-verde-olivo hover:bg-verde-oscuro text-crema font-display font-semibold text-xl px-10 py-4 rounded-2xl transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
           >
-            Ir al formulario de registro →
+            Ir al formulario de registro
           </Link>
           <p className="mt-6 text-tierra/60 text-sm">
             Co-organizado por <strong>CCJ Hidalgo</strong> · <strong>LCOY México 2026</strong> · <strong>REACCIONA A.C.</strong>
@@ -240,7 +294,7 @@ export default function Home() {
 
       {/* ───────── FOOTER ───────── */}
       <footer className="bg-tierra-oscuro py-8">
-        <div className="max-w-5xl mx-auto px-4 text-center">
+        <div className={`${CONTAINER} text-center`}>
           <p className="text-crema/50 text-sm">
             © 2026 CCJ Hidalgo — Cumbres Climáticas Juveniles
           </p>
