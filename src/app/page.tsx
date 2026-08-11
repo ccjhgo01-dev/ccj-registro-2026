@@ -30,7 +30,7 @@ const PATROCINIO_SLIDES = [
 const REQUISITOS = [
   {
     numero: '01',
-    titulo: '18 a 29 años',
+    titulo: '18 a 30 años',
     desc: 'El espacio está diseñado para juventudes en ese rango de edad.',
   },
   {

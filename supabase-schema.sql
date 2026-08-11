@@ -11,7 +11,7 @@ create table if not exists public.registros (
   nombre_completo   text not null,
   correo            text not null,
   telefono          text not null,
-  edad              smallint not null check (edad >= 18 and edad <= 29),
+  edad              smallint not null check (edad >= 18 and edad <= 30),
   municipio         text not null,
   institucion       text not null,
   

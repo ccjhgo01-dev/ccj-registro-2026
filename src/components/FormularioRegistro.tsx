@@ -2,16 +2,9 @@
 
 import { useState, useTransition } from 'react'
 import { enviarRegistro } from '@/lib/actions'
-import { ACTIVIDADES, RegistroForm } from '@/types/registro'
+import { ACTIVIDADES, MUNICIPIOS_HIDALGO, RegistroForm } from '@/types/registro'
 import Link from 'next/link'
 import Image from 'next/image'
-
-const MUNICIPIOS_HIDALGO = [
-  'Pachuca de Soto', 'Tulancingo de Bravo', 'Tizayuca', 'Tula de Allende',
-  'Actopan', 'Huejutla de Reyes', 'Ixmiquilpan', 'Tepeji del Río', 'Zimapán',
-  'Apan', 'Metztitlán', 'Molango', 'Jacala de Ledezma', 'La Misión',
-  'Huichapan', 'Mixquiahuala', 'Tepeapulco', 'Villa de Tezontepec', 'Otro municipio',
-]
 
 const COMO_ENTERASTE = [
   'Instagram / redes sociales',
@@ -114,8 +107,8 @@ export default function FormularioRegistro() {
       nuevos.correo = 'Ingresa un correo válido.'
     if (!form.telefono.trim() || form.telefono.replace(/\D/g, '').length < 10)
       nuevos.telefono = 'Teléfono de 10 dígitos.'
-    if (!form.edad || Number(form.edad) < 18 || Number(form.edad) > 29)
-      nuevos.edad = 'Debes tener entre 18 y 29 años.'
+    if (!form.edad || Number(form.edad) < 18 || Number(form.edad) > 30)
+      nuevos.edad = 'Debes tener entre 18 y 30 años.'
     if (!form.municipio) nuevos.municipio = 'Selecciona tu municipio.'
     if (!form.institucion.trim()) nuevos.institucion = 'Indica tu escuela u organización.'
     if (!form.como_te_enteraste) nuevos.como_te_enteraste = '¿Cómo nos conociste?'
@@ -262,10 +255,10 @@ export default function FormularioRegistro() {
                 name="edad"
                 type="number"
                 min={18}
-                max={29}
+                max={30}
                 value={form.edad}
                 onChange={handleChange}
-                placeholder="18 a 29 años"
+                placeholder="18 a 30 años"
                 className={INPUT_CLASS}
               />
               {errors.edad && <p className="text-red-600 text-xs mt-1">{errors.edad}</p>}

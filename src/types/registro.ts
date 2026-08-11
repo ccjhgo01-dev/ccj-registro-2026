@@ -1,3 +1,10 @@
+export const MUNICIPIOS_HIDALGO = [
+  'Pachuca de Soto', 'Tulancingo de Bravo', 'Tizayuca', 'Tula de Allende',
+  'Actopan', 'Huejutla de Reyes', 'Ixmiquilpan', 'Tepeji del Río', 'Zimapán',
+  'Apan', 'Metztitlán', 'Molango', 'Jacala de Ledezma', 'La Misión',
+  'Huichapan', 'Mixquiahuala', 'Tepeapulco', 'Villa de Tezontepec', 'Otro municipio',
+]
+
 export interface Actividad {
   id: string
   dia: number
