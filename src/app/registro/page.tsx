@@ -19,7 +19,7 @@ export default function RegistroPage() {
           </Link>
           <h1 className="font-display text-4xl text-crema">Registro de asistencia</h1>
           <p className="text-crema/70 mt-2">
-            CCJ Hidalgo 2026 · 27 julio – 1° agosto
+            CCJ Hidalgo 2026 · 10 agosto – 28 agosto
           </p>
         </div>
       </div>

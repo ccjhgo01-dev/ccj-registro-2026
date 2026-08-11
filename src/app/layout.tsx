@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: ['CCJ', 'Hidalgo', 'cumbre climática juvenil', 'medio ambiente', 'juventudes'],
   openGraph: {
     title: 'CCJ Hidalgo 2026 — Regístrate',
-    description: 'Sé parte del cambio climático desde Hidalgo. 27 julio – 1° agosto 2026.',
+    description: 'Sé parte del cambio climático desde Hidalgo. 10 – 28 de agosto 2026.',
     type: 'website',
   },
 }

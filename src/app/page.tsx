@@ -134,7 +134,7 @@ export default function Home() {
               <p className="text-crema/80 text-lg leading-relaxed mb-8 max-w-xl">
                 La <strong className="text-crema">Cumbre Climática Juvenil Hidalgo 2026</strong> ya tiene fechas,
                 actividades y un espacio para tu voz.
-                Regístrate para asistir a los eventos pre-cumbre y la cumbre oficial de delegadxs.
+                Regístrate para asistir a los eventos de la Ruta Previa y la cumbre oficial de delegadxs.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -155,8 +155,8 @@ export default function Home() {
               {/* Fechas clave */}
               <div className="mt-10 flex flex-wrap gap-4">
                 {[
-                  { label: 'Pre-cumbre', value: '27–30 julio' },
-                  { label: 'Cumbre Delegadxs', value: '31 jul – 1° ago' },
+                  { label: 'Ruta Previa', value: '10-19 agosto' },
+                  { label: 'Cumbre Delegadxs', value: '27-28 agosto' },
                   { label: 'Hidalgo', value: 'Estado anfitrión' },
                 ].map((item) => (
                   <div key={item.label} className="bg-blanco/10 rounded-xl px-4 py-2">
@@ -219,7 +219,7 @@ export default function Home() {
         <div className={CONTAINER}>
           <div className="text-center mb-10">
             <p className="text-dorado font-semibold text-sm uppercase tracking-widest mb-2">Programa</p>
-            <h2 className="font-display text-3xl text-verde-oscuro">Actividades pre-cumbre</h2>
+            <h2 className="font-display text-3xl text-verde-oscuro">Actividades de la Ruta Previa</h2>
             <p className="text-tierra mt-2">Cada sesión dura 40 min + 5 min tolerancia + 5 min extras</p>
           </div>
 
@@ -246,7 +246,7 @@ export default function Home() {
                       Cumbre Oficial para Delegadxs
                     </p>
                     <p className="text-crema/80 text-sm mt-1">
-                      31 de julio y 1° de agosto — El encuentro central donde se construyen propuestas
+                      27 y 28 de agosto — El encuentro central donde se construyen propuestas
                       de posicionamiento juvenil frente a la crisis climática de Hidalgo.
                     </p>
                   </div>

@@ -373,7 +373,7 @@ export default function FormularioRegistro() {
               <div>
                 <div className="flex items-center gap-2 mb-0.5">
                   <span className="bg-verde-olivo text-crema text-xs px-2 py-0.5 rounded font-semibold">CUMBRE OFICIAL</span>
-                  <span className="text-verde-oscuro text-xs font-semibold">31 julio – 1° agosto</span>
+                  <span className="text-verde-oscuro text-xs font-semibold">27 – 28 agosto</span>
                 </div>
                 <p className="text-verde-oscuro font-semibold text-sm">
                   Quiero ser Delegadx en la Cumbre

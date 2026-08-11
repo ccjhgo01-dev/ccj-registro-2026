@@ -9,53 +9,65 @@ export interface Actividad {
   confirmada: boolean
 }
 
+// Actividades de la Ruta Previa (en línea), previas a la Cumbre oficial de delegadxs
 export const ACTIVIDADES: Actividad[] = [
   {
     id: 'act-1',
     dia: 1,
-    fecha: '27 de julio',
-    titulo: 'Taller Liderazgo Ambiental — REACCIONA',
-    subtitulo: '¿Qué es una CCJ?',
+    fecha: '10 de agosto',
+    hora: '4:00 pm',
+    titulo: '¿Qué es una CCJ? / Liderazgo Ambiental',
+    ponente: 'REACCIONA',
     confirmada: true,
   },
   {
     id: 'act-2',
     dia: 2,
-    fecha: '28 de julio',
-    titulo: 'Plática: Salamandra pie plano de caverna',
-    ponente: 'Biol. Maria Karime Marin',
+    fecha: '11 de agosto',
+    hora: '6:00 pm',
+    titulo: '¿A tiempo para salvarla? Análisis de Riesgo para Chiropterotriton mosaueri',
+    ponente: 'Biól. Maria Karime Marin Carbajal',
     confirmada: true,
   },
   {
     id: 'act-3',
     dia: 3,
-    fecha: '29 de julio',
-    hora: '6:00 pm',
-    titulo: 'Xplora Reptilia',
+    fecha: '12 de agosto',
+    hora: '7:00 pm',
+    titulo: 'La ciencia no es sólo para científicos',
+    ponente: 'Biól. Andrea Calvo Rodríguez',
     confirmada: true,
   },
   {
     id: 'act-4',
     dia: 4,
-    fecha: '29 de julio',
-    hora: '7:00 pm',
-    titulo: 'El Papel de las Juventudes en la Divulgación Científica',
-    ponente: 'Biol. Andrea Calvo',
+    fecha: '19 de agosto',
+    hora: '6:00 pm',
+    titulo: 'La Conservación de la Biodiversidad Desde la Colectividad',
+    ponente: 'M. en C. Nallely Morales Capellán',
     confirmada: true,
   },
   {
     id: 'act-5',
     dia: 5,
-    fecha: '30 de julio',
-    titulo: 'Comunidades Regeneración',
-    ponente: 'Mafer Skewes — Rhesident A.C.',
+    fecha: 'Por confirmar',
+    titulo: 'Watergram',
+    ponente: 'Iván Razo',
+    confirmada: false,
+  },
+  {
+    id: 'act-6',
+    dia: 6,
+    fecha: 'Por confirmar',
+    titulo: '¿Qué es la NDC 3.0?',
+    ponente: 'SEMARNAT',
     confirmada: false,
   },
 ]
 
 export const CUMBRE_DIAS = [
-  { fecha: '31 de julio', label: 'Día 1 de la Cumbre' },
-  { fecha: '1° de agosto', label: 'Día 2 de la Cumbre' },
+  { fecha: '27 de agosto', label: 'Día 1 de la Cumbre' },
+  { fecha: '28 de agosto', label: 'Día 2 de la Cumbre' },
 ]
 
 export interface RegistroForm {
