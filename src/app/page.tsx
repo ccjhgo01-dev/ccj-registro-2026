@@ -11,15 +11,15 @@ const ACTIVIDADES_DER = ACTIVIDADES.filter((a) => a.dia > 3)
 const PATROCINIO_SLIDES = [
   {
     src: '/images/carrusel-convocatoria.jpeg',
-    alt: 'Convocatoria para delegadxs — mascota CCJ Hidalgo tocando tambor',
+    alt: 'La espera terminó — convocatoria para delegadxs de la CCJ Hidalgo 2026',
   },
   {
     src: '/images/carrusel-requisitos.jpeg',
-    alt: 'Requisitos para participar en la CCJ Hidalgo 2026',
+    alt: 'Requisitos para participar en la CCJ Hidalgo 2026: tener de 18 a 30 años',
   },
   {
     src: '/images/carrusel-patrocinador.jpeg',
-    alt: '¿Quieres ser patrocinador de la CCJ Hidalgo 2026?',
+    alt: '¿Quieres ser delegadx de la CCJ Hidalgo 2026?',
   },
   {
     src: '/images/carrusel-ayuda.jpeg',
