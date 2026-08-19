@@ -67,16 +67,6 @@ input[type="checkbox"] {
   outline-offset: 2px;
 }
 
-/* Animación suave para el mascot */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-.mascot-float {
-  animation: float 3s ease-in-out infinite;
-}
-
 /* Carrusel de patrocinadores — oculta la barra de scroll sin afectar el swipe nativo */
 .scrollbar-hide {
   scrollbar-width: none;

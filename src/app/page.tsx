@@ -167,16 +167,15 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Mascota oficial CCJ — foto real, sin tarjeta, que respire */}
+            {/* Sede de la Cumbre — Parque Ecológico Cubitos, 27-28 agosto */}
             <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div className="mascot-float relative w-64 sm:w-80 lg:w-full lg:max-w-[440px] aspect-[4/5] rounded-3xl overflow-hidden">
+              <div className="relative w-64 sm:w-80 lg:w-full lg:max-w-[440px] aspect-[4/5] rounded-3xl overflow-hidden">
                 <Image
-                  src="/images/mascota-hero.jpeg"
-                  alt="Mascota oficial CCJ Hidalgo 2026, la salamandra, registrando su ingreso a la cumbre"
+                  src="/images/hero-sede-cubitos.jpeg"
+                  alt="Sede de la Cumbre Climática Juvenil Hidalgo 2026: Parque Ecológico Cubitos, 27 y 28 de agosto, Pachuca de Soto, Hidalgo"
                   fill
                   sizes="(min-width: 1024px) 440px, (min-width: 640px) 320px, 256px"
                   className="object-cover"
-                  style={{ objectPosition: '50% 68%' }}
                   priority
                 />
               </div>
