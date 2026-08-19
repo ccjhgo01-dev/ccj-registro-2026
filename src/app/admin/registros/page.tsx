@@ -1,16 +1,10 @@
 import { supabaseAdmin } from '@/lib/supabaseAdmin'
 import { logoutAdmin } from '@/lib/adminActions'
-import { ACTIVIDADES, RegistroRecord } from '@/types/registro'
+import { RegistroRecord } from '@/types/registro'
+import AdminRegistrosTable from '@/components/AdminRegistrosTable'
 
 export const metadata = { title: 'Registros — Admin CCJ Hidalgo 2026' }
 export const dynamic = 'force-dynamic'
-
-const ACTIVIDAD_TITULOS = new Map(ACTIVIDADES.map((a) => [a.id, a.titulo]))
-
-function actividadesTexto(actividades: string[]): string {
-  if (!actividades?.length) return '—'
-  return actividades.map((id) => ACTIVIDAD_TITULOS.get(id) ?? id).join(', ')
-}
 
 export default async function AdminRegistrosPage() {
   const { data, error } = await supabaseAdmin
@@ -58,51 +52,7 @@ export default async function AdminRegistrosPage() {
           </div>
         </div>
 
-        <div className="overflow-x-auto bg-white rounded-2xl border border-dorado/20">
-          <table className="w-full text-sm text-left whitespace-nowrap">
-            <thead className="bg-beige text-verde-oscuro">
-              <tr>
-                <th className="px-4 py-3">Folio</th>
-                <th className="px-4 py-3">Nombre</th>
-                <th className="px-4 py-3">Correo</th>
-                <th className="px-4 py-3">Teléfono</th>
-                <th className="px-4 py-3">Edad</th>
-                <th className="px-4 py-3">Municipio</th>
-                <th className="px-4 py-3">Institución</th>
-                <th className="px-4 py-3">Actividades</th>
-                <th className="px-4 py-3">Cumbre</th>
-                <th className="px-4 py-3">¿Cómo se enteró?</th>
-                <th className="px-4 py-3">Mensaje</th>
-                <th className="px-4 py-3">Fecha</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-dorado/10">
-              {registros.map((r) => (
-                <tr key={r.id} className="hover:bg-beige/40">
-                  <td className="px-4 py-3 font-semibold text-verde-oscuro">{r.folio}</td>
-                  <td className="px-4 py-3">{r.nombre_completo}</td>
-                  <td className="px-4 py-3">{r.correo}</td>
-                  <td className="px-4 py-3">{r.telefono}</td>
-                  <td className="px-4 py-3">{r.edad}</td>
-                  <td className="px-4 py-3">{r.municipio}</td>
-                  <td className="px-4 py-3">{r.institucion}</td>
-                  <td className="px-4 py-3 whitespace-normal max-w-xs">{actividadesTexto(r.actividades)}</td>
-                  <td className="px-4 py-3">{r.asiste_cumbre ? 'Sí' : 'No'}</td>
-                  <td className="px-4 py-3">{r.como_te_enteraste}</td>
-                  <td className="px-4 py-3 whitespace-normal max-w-xs">{r.mensaje || '—'}</td>
-                  <td className="px-4 py-3">{new Date(r.created_at).toLocaleString('es-MX')}</td>
-                </tr>
-              ))}
-              {registros.length === 0 && (
-                <tr>
-                  <td colSpan={12} className="px-4 py-8 text-center text-tierra/60">
-                    Todavía no hay registros.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
+        <AdminRegistrosTable registros={registros} />
       </div>
     </main>
   )
